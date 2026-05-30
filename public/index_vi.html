@@ -1,0 +1,1048 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=768">
+<style>
+  .shaded-figure {
+    background-color: hsl(200, 20%, 97%);
+    border-top: 1px solid hsla(0, 0%, 0%, 0.1);
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+    padding: 30px 0;
+  }
+  d-article figure.tight {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>
+
+<distill-header></distill-header>
+
+<d-front-matter>
+  <script type="text/json">
+{
+  "title": "Sử dụng Trí tuệ Nhân tạo để Tăng cường Trí tuệ Con người",
+  "description": "Bằng cách tạo ra các giao diện người dùng cho phép chúng ta làm việc với các biểu diễn bên trong các mô hình học máy, chúng ta có thể cung cấp cho con người những công cụ mới để suy luận.",
+  "authors": [
+    {
+      "author": "Shan Carter",
+      "authorURL": "http://shancarter.com/",
+      "affiliation": "Google Brain Team",
+      "affiliationURL": "https://g.co/brain"
+    },
+    {
+      "author": "Michael Nielsen",
+      "authorURL": "http://michaelnielsen.org",
+      "affiliation": "YC Research",
+      "affiliationURL": "https://ycr.org/"
+    }
+  ],
+  "katex": {
+    "delimiters": [
+      {
+        "left": "$",
+        "right": "$",
+        "display": false
+      }
+    ]
+  }
+}
+</script>
+</d-front-matter>
+
+<d-title>
+  <h1 style="grid-column: text/page;">Sử dụng Trí tuệ Nhân tạo để Tăng cường Trí tuệ Con người</h1>
+  <p>
+    Bằng cách tạo ra các giao diện người dùng cho phép chúng ta làm việc với các biểu diễn bên trong các mô hình machine learning, chúng ta có thể cung cấp cho con người những công cụ mới để suy luận.
+  </p>
+</d-title>
+<d-byline></d-byline>
+<d-article>
+  <h2>
+    Máy tính dùng để làm gì?
+  </h2>
+  <p>
+    Trong lịch sử, những câu trả lời khác nhau cho câu hỏi này &ndash; tức là,
+    những tầm nhìn khác nhau về điện toán &ndash; đã góp phần truyền cảm hứng và
+    định hình các hệ thống điện toán mà nhân loại cuối cùng đã xây dựng.
+    Hãy xem xét những máy tính điện tử đầu tiên. ENIAC, máy tính điện tử đa dụng đầu tiên trên thế giới,
+    được đưa vào sử dụng để tính toán các bảng bắn pháo binh cho
+    Quân đội Hoa Kỳ. Những máy tính đầu tiên khác cũng được sử dụng để giải các
+    bài toán số học, chẳng hạn như mô phỏng các vụ nổ hạt nhân,
+    dự báo thời tiết và lập kế hoạch chuyển động của tên lửa. Các
+    cỗ máy này hoạt động theo chế độ xử lý theo lô (batch mode), sử dụng các thiết bị
+    nhập và xuất thô sơ, và không có bất kỳ tương tác thời gian thực nào.
+    Đó là một tầm nhìn về máy tính như những cỗ máy xử lý số liệu,
+    được dùng để tăng tốc các phép tính mà trước đây có thể mất
+    nhiều tuần, nhiều tháng hoặc lâu hơn đối với một nhóm người thực hiện.
+  </p>
+  <p>
+    Vào những năm 1950, một tầm nhìn khác về mục đích của máy tính bắt đầu
+    hình thành. Tầm nhìn đó được kết tinh vào năm 1962, khi Douglas
+    Engelbart đề xuất rằng máy tính có thể được sử dụng như một phương tiện
+    để <d-cite key="Engelbart1962a">tăng cường trí tuệ con người</d-cite>.
+    Theo quan điểm này, máy tính không chủ yếu là những công cụ
+    giải quyết các bài toán tính toán số liệu. Thay vào đó, chúng là
+    những hệ thống tương tác thời gian thực, với khả năng nhập và xuất phong phú,
+    mà con người có thể làm việc cùng để hỗ trợ và mở rộng
+    quá trình giải quyết vấn đề của chính mình. Tầm nhìn về tăng cường trí tuệ
+    (IA) này đã ảnh hưởng sâu sắc tới nhiều người khác, bao gồm các nhà nghiên cứu như
+    Alan Kay tại Xerox PARC, các doanh nhân như Steve Jobs tại Apple,
+    và dẫn đến nhiều ý tưởng cốt lõi của các hệ thống điện toán hiện đại.
+    Những ý tưởng đó cũng có ảnh hưởng sâu rộng tới nghệ thuật số và âm nhạc,
+    cũng như các lĩnh vực như thiết kế tương tác, trực quan hóa dữ liệu,
+    sáng tạo tính toán và tương tác người-máy.
+  </p>
+  <p>
+    Nghiên cứu về IA thường cạnh tranh với nghiên cứu về
+    trí tuệ nhân tạo (AI): cạnh tranh về nguồn tài trợ, cạnh tranh
+    trong việc thu hút sự quan tâm của các nhà nghiên cứu tài năng. Mặc dù
+    hai lĩnh vực này luôn có sự giao thoa, IA thường tập trung
+    vào việc xây dựng các hệ thống cho phép con người và máy móc làm việc
+    cùng nhau, trong khi AI tập trung vào việc chuyển giao hoàn toàn
+    các nhiệm vụ trí tuệ cho máy móc. Đặc biệt, các bài toán trong AI
+    thường được đặt ra dưới dạng đạt tới hoặc vượt qua năng lực của con người:
+    đánh bại con người trong cờ vua hoặc cờ vây; học cách nhận dạng
+    tiếng nói và hình ảnh hoặc dịch ngôn ngữ tốt như con người;
+    và nhiều nhiệm vụ khác.
+  </p>
+  <p>
+    Bài luận này mô tả một lĩnh vực mới, đang xuất hiện ngày nay từ
+    sự tổng hợp giữa AI và IA. Đối với lĩnh vực này, chúng tôi đề xuất
+    tên gọi <em>tăng cường trí tuệ bằng trí tuệ nhân tạo</em>
+    (artificial intelligence augmentation, AIA): việc sử dụng
+    các hệ thống AI để phát triển những phương pháp mới cho
+    tăng cường trí tuệ. Lĩnh vực mới này đặt ra những câu hỏi nền tảng
+    quan trọng mới, những câu hỏi không gắn liền với bất kỳ lĩnh vực mẹ nào.
+    Chúng tôi tin rằng các nguyên lý và hệ thống của AIA sẽ khác biệt
+    một cách căn bản so với phần lớn các hệ thống hiện có.
+  </p>
+  <p>
+    Bài luận của chúng tôi bắt đầu bằng việc khảo sát các công trình kỹ thuật gần đây
+    gợi mở về tăng cường trí tuệ bằng trí tuệ nhân tạo, bao gồm các nghiên cứu
+    về <em>giao diện sinh</em> (generative interfaces) &ndash; tức là,
+    các giao diện có thể được sử dụng để khám phá và trực quan hóa các mô hình
+    machine learning sinh. Những giao diện như vậy phát triển một dạng bản đồ học
+    của các mô hình sinh, cung cấp cho con người những cách thức để khám phá,
+    diễn giải ý nghĩa từ các mô hình đó, và tích hợp những gì các mô hình
+    đó “biết” vào công việc sáng tạo của họ.
+  </p>
+  <p>
+    Bài luận của chúng tôi không chỉ đơn thuần là một khảo sát các công trình kỹ thuật.
+    Chúng tôi tin rằng đây là thời điểm thích hợp để xác định một số câu hỏi
+    rộng lớn và nền tảng nằm ở cốt lõi của lĩnh vực đang nổi lên này.
+    Những công cụ mới này thúc đẩy sự sáng tạo tới mức độ nào?
+    Liệu chúng có thể được sử dụng để tạo ra những ý tưởng thực sự mới lạ
+    và bất ngờ hay không, hay các ý tưởng đó chỉ là những sáo mòn,
+    được hình thành từ sự tái tổ hợp đơn giản của các ý tưởng hiện có?
+    Liệu các hệ thống như vậy có thể được dùng để phát triển những
+    primitive giao diện hoàn toàn mới hay không? Và những primitive mới đó
+    sẽ thay đổi và mở rộng cách con người suy nghĩ như thế nào?
+  </p>
+  <h2>
+    Sử dụng mô hình sinh để phát minh các thao tác sáng tạo có ý nghĩa
+  </h2>
+  <p>
+    Hãy xem xét một ví dụ trong đó một mô hình machine learning làm cho
+    một loại giao diện mới trở nên khả thi. Để hiểu giao diện này,
+    hãy tưởng tượng bạn là một nhà thiết kế kiểu chữ (type designer),
+    đang làm việc để tạo ra một font chữ mới<d-footnote>Chúng tôi sẽ cố ý
+    bỏ qua sự khác biệt giữa font và typeface. Xin lỗi bất kỳ nhà thiết kế
+    kiểu chữ nào có thể đang đọc bài viết này.</d-footnote>. Sau khi phác thảo
+    một số thiết kế ban đầu, bạn muốn thử nghiệm các biến thể in đậm,
+    nghiêng và thu hẹp chiều rộng. Hãy xem xét một công cụ có thể tạo và khám phá
+    các biến thể như vậy từ bất kỳ thiết kế ban đầu nào. Vì những lý do
+    sẽ sớm được giải thích, chất lượng kết quả còn khá thô sơ;
+    xin hãy kiên nhẫn với chúng tôi.
+  </p>
+  <figure class="l-screen shaded-figure">
+    <d-figure id="boldify" ></d-figure>
+  </figure>
+  <p>
+    Dĩ nhiên, thay đổi độ đậm (tức là weight), độ nghiêng và chiều rộng
+    chỉ là ba cách để biến đổi một font chữ. Hãy tưởng tượng rằng thay vì
+    xây dựng các công cụ chuyên biệt, người dùng có thể tự tạo công cụ của mình
+    chỉ bằng cách chọn các ví dụ từ những font chữ hiện có. Chẳng hạn,
+    giả sử bạn muốn thay đổi mức độ có chân (serif) của một font.
+    Trong ví dụ dưới đây, hãy chọn từ 5 đến 10 font sans-serif từ hộp phía trên
+    và kéo chúng vào hộp bên trái. Chọn từ 5 đến 10 font serif
+    và kéo chúng vào hộp bên phải. Khi bạn thực hiện điều này, một mô hình
+    machine learning chạy trong trình duyệt sẽ tự động suy luận từ các ví dụ đó
+    cách nội suy font khởi đầu của bạn theo hướng serif hoặc sans-serif:
+  </p>
+  <figure id="serifify" class="l-screen shaded-figure">
+  </figure>
+  <p>
+    Thực tế, chúng tôi đã sử dụng chính kỹ thuật này để xây dựng công cụ
+    in đậm, in nghiêng và thu hẹp chiều rộng ở trên. Để làm điều đó,
+    chúng tôi sử dụng các ví dụ sau về font đậm và không đậm,
+    font nghiêng và không nghiêng, cũng như font thu hẹp và không thu hẹp:
+  </p>
+  <figure id="boldify-with-examples" class="l-screen">
+  </figure>
+  <p>
+    Để xây dựng các công cụ này, chúng tôi sử dụng cái gọi là <em>mô hình sinh</em>;
+      mô hình cụ thể được sử dụng đã được huấn luyện
+      bởi <d-cite key="Wexler2017">James Wexler</d-cite>. Để hiểu
+      các mô hình sinh, hãy lưu ý rằng <em>tiên nghiệm</em>,
+      việc mô tả một font chữ dường như đòi hỏi rất nhiều dữ liệu. Ví dụ,
+      nếu font có kích thước $64$ bởi $64$ pixel, thì ta kỳ vọng
+      cần $64 \times 64 = 4,096$ tham số để mô tả một glyph duy nhất.
+      Tuy nhiên, chúng ta có thể sử dụng một mô hình sinh để tìm ra
+      một mô tả đơn giản hơn nhiều.
+  </p>
+  <p>
+    Chúng tôi thực hiện điều này bằng cách xây dựng một mạng nơ-ron nhận vào
+    một số lượng nhỏ các biến đầu vào, được gọi là <em>biến ẩn</em>
+    (latent variables), và tạo ra toàn bộ glyph ở đầu ra.
+    Đối với mô hình cụ thể mà chúng tôi sử dụng, có $40$ chiều không gian ẩn,
+    được ánh xạ sang không gian $4,096$ chiều mô tả toàn bộ các pixel trong glyph.
+    Nói cách khác, ý tưởng là ánh xạ một không gian có số chiều thấp
+    sang một không gian có số chiều cao hơn:
+  </p>
+  <figure id="latent-space-typeface" class="l-screen tight">
+  </figure>
+  <p>
+    Mô hình sinh mà chúng tôi sử dụng là một loại mạng nơ-ron được biết đến với tên gọi
+    <d-cite key="Kingma2014a">variational autoencoder
+    (VAE)</d-cite>. Đối với mục đích của chúng ta, các chi tiết cụ thể
+    của mô hình sinh không quá quan trọng. Điều quan trọng là bằng cách
+    thay đổi các biến ẩn được sử dụng làm đầu vào, ta có thể thu được
+    các font khác nhau ở đầu ra. Vì vậy, một lựa chọn biến ẩn sẽ
+    tạo ra một font, trong khi một lựa chọn khác sẽ tạo ra một font khác:
+  </p>
+  <figure id="latent-space-typeface-sample" class="l-screen tight">
+  </figure>
+  <p>
+    Bạn có thể xem các biến ẩn như một biểu diễn cô đọng ở mức cao
+    của font chữ. Mạng nơ-ron nhận biểu diễn mức cao đó
+    và chuyển đổi nó thành toàn bộ dữ liệu pixel. Thật đáng kinh ngạc khi
+    chỉ $40$ con số có thể nắm bắt được độ phức tạp biểu kiến của một glyph,
+    vốn ban đầu cần tới $4,096$ biến.
+  </p>
+  <p>
+    Mô hình sinh mà chúng tôi sử dụng được học từ một tập huấn luyện gồm hơn
+    $50$ nghìn
+    font chữ <d-cite key="Bernhardsson2016a">Bernhardsson</d-cite>
+    được thu thập từ web mở. Trong quá trình huấn luyện,
+    các trọng số và độ lệch trong mạng được điều chỉnh sao cho mạng
+    có thể tạo ra một xấp xỉ gần đúng của bất kỳ font mong muốn nào
+    trong tập huấn luyện, miễn là tìm được lựa chọn phù hợp cho các biến ẩn.
+    Theo một nghĩa nào đó, mô hình đang học một biểu diễn được nén mạnh
+    của toàn bộ các font trong tập huấn luyện.
+  </p>
+  <p>
+    Thực tế, mô hình không chỉ tái tạo lại các font trong tập huấn luyện.
+    Nó còn có thể khái quát hóa, tạo ra các font chưa từng xuất hiện
+    trong quá trình huấn luyện. Bằng việc bị buộc phải tìm ra một mô tả cô đọng
+    cho các ví dụ huấn luyện, mạng nơ-ron học được một mô hình trừu tượng
+    ở cấp độ cao hơn về bản chất của font chữ. Chính mô hình cấp cao đó
+    cho phép khái quát vượt ra ngoài các ví dụ đã thấy để tạo ra
+    những font có vẻ ngoài hợp lý.
+  </p>
+  <p>
+    Lý tưởng nhất, một mô hình sinh tốt sẽ được tiếp xúc với tương đối ít
+    ví dụ huấn luyện và sử dụng sự tiếp xúc đó để khái quát hóa tới
+    không gian của tất cả các font mà con người có thể đọc được.
+    Nghĩa là, đối với bất kỳ font nào có thể hình dung được &ndash;
+    dù đang tồn tại hay thậm chí chỉ được tưởng tượng trong tương lai &ndash;
+    đều có thể tìm thấy các biến ẩn tương ứng chính xác với font đó.
+    Dĩ nhiên, mô hình mà chúng tôi sử dụng còn rất xa mới đạt được lý tưởng này
+    &ndash; một thất bại đặc biệt rõ ràng là nhiều font do mô hình sinh ra
+    đã bỏ mất phần đuôi của chữ “Q” viết hoa (bạn có thể thấy điều này
+    trong các ví dụ ở trên). Tuy vậy, sẽ rất hữu ích nếu luôn ghi nhớ
+    một mô hình sinh lý tưởng sẽ làm được những gì.
+  </p>
+  <p>
+    Những mô hình sinh như vậy ở một số khía cạnh tương tự cách các
+    lý thuyết khoa học hoạt động. Các lý thuyết khoa học thường đơn giản hóa mạnh
+    mô tả về những hiện tượng tưởng như rất phức tạp, rút gọn một số lượng lớn
+    biến số thành chỉ vài biến từ đó có thể suy ra nhiều khía cạnh
+    trong hành vi của hệ thống. Hơn nữa, những lý thuyết khoa học tốt
+    đôi khi còn cho phép chúng ta khái quát hóa để khám phá các hiện tượng mới.
+  </p>
+  <p>
+    Ví dụ, hãy xem xét các vật thể vật chất thông thường. Những vật thể như vậy
+    có cái mà các nhà vật lý gọi là <em>pha</em> &ndash; chúng có thể là
+    chất lỏng, chất rắn, chất khí hoặc có thể là những trạng thái kỳ lạ hơn,
+    chẳng hạn như chất siêu dẫn
+    hoặc <a href="https://en.wikipedia.org/wiki/Bose%E2%80%93Einstein_condensate">ngưng tụ
+    Bose-Einstein</a>. <em>Tiên nghiệm</em>, những hệ như vậy có vẻ cực kỳ
+    phức tạp, có thể liên quan tới khoảng $10^{23}$ phân tử.
+    Tuy nhiên, các định luật nhiệt động lực học và cơ học thống kê cho phép
+    chúng ta tìm được một mô tả đơn giản hơn, rút gọn sự phức tạp đó
+    xuống chỉ còn vài biến số (nhiệt độ, áp suất, v.v.), bao quát phần lớn
+    hành vi của hệ thống. Hơn nữa, đôi khi có thể khái quát hóa để dự đoán
+    những pha vật chất mới ngoài mong đợi. Ví dụ, vào năm 1924,
+    các nhà vật lý đã sử dụng nhiệt động lực học và cơ học thống kê để dự đoán
+    một pha vật chất mới đáng chú ý là ngưng tụ Bose-Einstein,
+    trong đó một tập hợp các nguyên tử có thể cùng chiếm giữ những trạng thái lượng tử
+    giống hệt nhau, dẫn đến các hiệu ứng giao thoa lượng tử quy mô lớn đầy bất ngờ.
+    Chúng ta sẽ quay lại khả năng dự đoán này trong phần thảo luận sau về
+    tính sáng tạo và các mô hình sinh.
+  </p>
+  <p>
+    Quay trở lại với các chi tiết kỹ thuật của mô hình sinh, làm thế nào chúng ta
+    có thể sử dụng những mô hình như vậy để thực hiện kiểu suy luận dựa trên ví dụ
+    như trong công cụ ở trên? Hãy xét trường hợp của công cụ in đậm.
+    Trong trường hợp đó, chúng tôi lấy trung bình tất cả các vector ẩn
+    của những font đậm do người dùng chỉ định và trung bình của tất cả các font
+    không đậm do người dùng chỉ định. Sau đó, chúng tôi tính hiệu
+    giữa hai vector trung bình này:
+  </p>
+  <figure id="boldify-vector-defined" class="tight" style="grid-column:middle">
+  </figure>
+  <p>
+    Chúng tôi sẽ gọi đây là <em>vector in đậm</em>. Để làm cho một font bất kỳ
+    đậm hơn, chúng tôi chỉ cần cộng thêm một phần của vector in đậm vào
+    vector ẩn tương ứng, trong đó lượng vector in đậm được cộng vào
+    quyết định độ đậm của kết quả<d-footnote>Trên thực tế, đôi khi người ta sử dụng
+    một quy trình hơi khác. Trong một số mô hình sinh, các vector ẩn
+    phải thỏa mãn một số ràng buộc &ndash; chẳng hạn, chúng có thể đều có cùng độ dài.
+    Khi đó, như trong mô hình của chúng tôi, cần sử dụng một phép “cộng”
+    tinh vi hơn để đảm bảo độ dài vẫn được giữ nguyên.
+    Tuy nhiên, về mặt khái niệm, việc cộng vector in đậm là cách đúng đắn để hình dung.</d-footnote>:
+  </p>
+  <figure id="boldify-vector-sampled" class="tight" style="grid-column:middle">
+  </figure>
+  <p>
+    Kỹ thuật này được giới thiệu
+    bởi <d-cite key="Larsen2016a">Larsen <em>và cộng sự</em></d-cite>,
+    và các vector như vector in đậm đôi khi được gọi là
+    <em>vector thuộc tính</em> (attribute vectors). Ý tưởng tương tự
+    được sử dụng để triển khai tất cả các công cụ mà chúng tôi đã trình bày.
+    Nghĩa là, chúng tôi sử dụng các font ví dụ để tạo ra vector in đậm,
+    vector in nghiêng, vector thu hẹp và vector serif do người dùng định nghĩa.
+    Do đó, giao diện cung cấp một phương thức để khám phá không gian ẩn
+    theo bốn hướng đó.
+  </p>
+  <p>
+    Các công cụ mà chúng tôi trình bày có nhiều hạn chế. Hãy xem xét ví dụ sau,
+    trong đó chúng tôi bắt đầu với một glyph ví dụ ở giữa, rồi tăng hoặc giảm
+    độ đậm của nó (lần lượt ở bên phải và bên trái):
+  </p>
+  <figure id="boldify-tool-examples">
+  </figure>
+  <p>
+    Khi quan sát các glyph bên trái và bên phải, chúng ta thấy nhiều
+    hiện tượng nhiễu không mong muốn. Đặc biệt đối với glyph ngoài cùng bên phải,
+    các cạnh bắt đầu trở nên gồ ghề và các chân chữ bắt đầu biến mất.
+    Một mô hình sinh tốt hơn sẽ giảm bớt những hiện tượng này.
+    Đây là một chương trình nghiên cứu dài hạn đầy hứa hẹn, với nhiều bài toán thú vị.
+    Tuy nhiên, ngay cả với mô hình hiện tại, việc sử dụng mô hình sinh
+    vẫn mang lại một số lợi ích đáng chú ý.
+  </p>
+  <p>
+    Để hiểu những lợi ích đó, hãy xem xét một cách tiếp cận ngây thơ đối với
+    việc in đậm, trong đó chúng ta chỉ đơn giản thêm một số pixel quanh các cạnh
+    của glyph để làm nó dày hơn. Mặc dù cách làm này có thể phù hợp với trực giác
+    của người không chuyên về thiết kế kiểu chữ, các chuyên gia thực hiện
+    điều gì đó phức tạp hơn nhiều. Trong ví dụ dưới đây, chúng tôi trình bày
+    kết quả của quy trình làm dày ngây thơ này so với những gì thực sự được thực hiện,
+    đối với Georgia và Helvetica:
+  </p>
+  <figure id="bold-naive">
+  </figure>
+  <p>
+    Như bạn có thể thấy, quy trình in đậm ngây thơ tạo ra các kết quả
+    khá khác biệt trong cả hai trường hợp. Ví dụ, với Georgia,
+    nét bên trái chỉ thay đổi nhẹ khi in đậm, trong khi nét bên phải
+    được mở rộng đáng kể nhưng chỉ về một phía. Trong cả hai font,
+    việc in đậm không làm thay đổi chiều cao của font, trong khi
+    cách tiếp cận ngây thơ lại làm như vậy.
+  </p>
+  <p>
+    Như những ví dụ này cho thấy, việc in đậm tốt <em>không</em> phải là
+    một quá trình đơn giản chỉ làm dày font. Các nhà thiết kế kiểu chữ chuyên nghiệp
+    sở hữu nhiều heuristic cho việc in đậm, những heuristic được suy ra từ
+    nhiều lần thử nghiệm trước đó và từ việc nghiên cứu cẩn thận các ví dụ lịch sử.
+    Việc nắm bắt toàn bộ những heuristic đó trong một chương trình truyền thống
+    sẽ đòi hỏi khối lượng công việc khổng lồ. Lợi ích của việc sử dụng
+    mô hình sinh là nó tự động học được nhiều heuristic như vậy.
+  </p>
+  <p>
+    Ví dụ, một công cụ in đậm ngây thơ sẽ nhanh chóng lấp đầy khoảng trống âm
+    được bao kín ở phần trên bên trong của chữ “A”. Công cụ font này không làm như vậy.
+    Thay vào đó, nó cố gắng duy trì khoảng trống âm đó bằng cách hạ thấp thanh ngang
+    của chữ A xuống và mở rộng các nét bên trong chậm hơn các nét bên ngoài.
+    Nguyên tắc này thể hiện rõ trong các ví dụ ở trên, đặc biệt là Helvetica,
+    và cũng có thể quan sát thấy trong hoạt động của công cụ font:
+  </p>
+  <figure id="boldify-tool-examples-positive">
+  </figure>
+  <p>
+    Heuristic bảo toàn khoảng trống âm được bao kín này không phải là điều
+    hiển nhiên về mặt <em>tiên nghiệm</em>. Tuy nhiên, nó xuất hiện trong nhiều font
+    được thiết kế chuyên nghiệp. Nếu quan sát các ví dụ như ở trên,
+    sẽ dễ dàng nhận ra lý do: nó cải thiện khả năng đọc. Trong quá trình huấn luyện,
+    mô hình sinh của chúng tôi đã tự động suy ra nguyên tắc này từ những ví dụ
+    mà nó quan sát được. Và giao diện in đậm của chúng tôi sau đó
+    cung cấp nguyên tắc đó cho người dùng.
+  </p>
+  <p>
+    Trên thực tế, mô hình còn nắm bắt được nhiều heuristic khác.
+    Chẳng hạn, trong các ví dụ trên, chiều cao của font được bảo toàn
+    (xấp xỉ), đây là chuẩn mực trong thiết kế font chuyên nghiệp.
+    Một lần nữa, điều đang diễn ra không đơn thuần là làm dày font,
+    mà là việc áp dụng một heuristic tinh tế hơn được mô hình sinh suy ra.
+    Những heuristic như vậy có thể được sử dụng để tạo ra các font
+    mang những thuộc tính mà người dùng khó có thể tự nghĩ tới.
+    Vì thế, công cụ này mở rộng khả năng của những người bình thường
+    trong việc khám phá không gian các font có ý nghĩa.
+  </p>
+  <p>
+    Công cụ font là một ví dụ về một loại công nghệ nhận thức.
+    Đặc biệt, các thao tác nguyên thủy mà nó chứa đựng có thể được
+    nội hóa thành một phần trong cách suy nghĩ của người dùng.
+    Ở khía cạnh này, nó tương tự như các chương trình như <em>Photoshop</em>,
+    bảng tính hoặc các chương trình đồ họa 3D. Mỗi chương trình đều cung cấp
+    một tập hợp primitive giao diện mới, những primitive mà người dùng có thể nội hóa
+    thành các thành phần cơ bản mới trong tư duy của mình.
+    Hành động nội hóa các primitive mới này là nền tảng của nhiều công trình
+    về tăng cường trí tuệ.
+  </p>
+  <p>
+    Những ý tưởng được minh họa trong công cụ font có thể được mở rộng sang
+    các lĩnh vực khác. Sử dụng cùng một giao diện, chúng ta có thể dùng mô hình sinh
+    để thao tác hình ảnh khuôn mặt người theo các thuộc tính như biểu cảm,
+    giới tính hoặc màu tóc. Hoặc thao tác các câu văn theo độ dài,
+    tính châm biếm hoặc giọng điệu. Hoặc thao tác các phân tử theo
+    các đặc tính hóa học:
+  </p>
+
+<style>
+    #alternate-uses .root {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    @media(min-width: 600px) {
+      #alternate-uses .root {
+        max-width: 760px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 50px;
+      }
+    }
+    .note {
+      margin-top: 12px;
+      grid-column-end: span 2;
+      font-size: 10px;
+      line-height: 1.5em;
+      text-align: left;
+      color: rgba(0, 0, 0, 0.4);
+    }
+  </style>
+
+  <figure id="alternate-uses" style="grid-column: screen">
+
+```
+<div class="root">
+  <div class="column">
+    <div class="faces"></div>
+    <div class="note">
+      Hình ảnh từ <em>Sampling Generative Networks</em> của <d-cite key="White2016a">White</d-cite>.
+    </div>
+  </div>
+  <div class="column">
+    <div class="sentences"></div>
+    <div class="note">
+      Câu văn từ <em>Pride and Prejudice</em> của Jane Austen. Được nội suy bởi các tác giả. Lấy cảm hứng từ các thí nghiệm do tiểu thuyết gia <d-cite key="Sloan2017">Robin Sloan</d-cite> thực hiện.
+    </div>
+  </div>
+  <div class="column">
+    <div class="molecules"></div>
+    <div class="note">
+      Hình ảnh từ <em>Automatic chemical design using a data-driven continuous representation of molecules</em> của <d-cite key="GomezBombarelli2016">Gómez-Bombarelli <em>và cộng sự</em></d-cite>.
+    </div>
+  </div>
+
+</div>
+```
+
+  </figure>
+  <p>
+    Những giao diện sinh như vậy cung cấp một dạng bản đồ học
+    cho các mô hình sinh, những cách thức để con người khám phá
+    và kiến tạo ý nghĩa bằng cách sử dụng các mô hình đó.
+  </p>
+  <p>
+    Trước đó, chúng ta đã thấy mô hình font tự động suy ra những nguyên lý
+    tương đối sâu sắc về thiết kế font và cung cấp chúng cho người dùng.
+    Mặc dù thật tuyệt khi các nguyên lý sâu sắc như vậy có thể được suy ra,
+    đôi khi những mô hình đó cũng suy ra những điều sai lệch hoặc không mong muốn.
+    Chẳng hạn, <d-cite key="White2016a">White chỉ ra</d-cite> rằng
+    việc thêm một vector nụ cười trong một số mô hình khuôn mặt
+    không chỉ làm khuôn mặt cười nhiều hơn mà còn khiến chúng trông nữ tính hơn.
+    Tại sao? Bởi vì trong dữ liệu huấn luyện, có nhiều phụ nữ cười hơn nam giới.
+    Vì vậy, những mô hình này không chỉ học các sự thật sâu sắc về thế giới,
+    mà còn có thể nội hóa các định kiến hoặc niềm tin sai lệch.
+    Một khi thiên lệch như vậy được nhận diện, người ta thường có thể thực hiện
+    các điều chỉnh thích hợp. Tuy nhiên, để tìm ra những thiên lệch đó
+    đòi hỏi phải kiểm toán mô hình một cách cẩn thận, và hiện vẫn chưa rõ
+    làm thế nào để bảo đảm rằng các cuộc kiểm toán như vậy là toàn diện.
+  </p>
+
+<!-- <p>
+    The font tool and similar interfaces are severely limited by the
+    quality of the underlying models.  This of course suggests the
+    question of how to build higher quality generative models.  A lot
+    of ongoing research work is now focused on this, and the models
+    are improving rapidly.  But as the models improve, we believe it
+    is at least equally interesting to ask how to build interfaces
+    that surface what those models have learned.
+  </p> -->
+
+  <p>
+    Ở phạm vi rộng hơn, chúng ta có thể đặt câu hỏi vì sao các vector thuộc tính
+    lại hoạt động khi chúng hoạt động, và tại sao chúng thất bại khi chúng thất bại?
+    Hiện tại, câu trả lời cho những câu hỏi này vẫn còn được hiểu rất hạn chế.
+  </p>
+  <p>
+    Để vector thuộc tính hoạt động, cần phải có khả năng lấy bất kỳ font khởi đầu nào
+    và xây dựng phiên bản in đậm tương ứng bằng cách cộng cùng <em>một</em> vector
+    trong không gian ẩn. Tuy nhiên, về mặt <em>tiên nghiệm</em>,
+    không có lý do nào để việc dịch chuyển bằng một vector hằng số duy nhất
+    lại có hiệu quả. Có thể chúng ta cần dịch chuyển theo nhiều cách khác nhau.
+    Chẳng hạn, các heuristic được sử dụng để in đậm font serif và sans-serif
+    khác nhau đáng kể, do đó có vẻ hợp lý khi những phép dịch chuyển rất khác nhau
+    sẽ được yêu cầu:
+  </p>
+  <figure id="boldify-parallel" class="l-page tight">
+  </figure>
+  <p>
+    Dĩ nhiên, chúng ta có thể thực hiện điều gì đó tinh vi hơn việc sử dụng
+    một vector thuộc tính hằng số duy nhất. Với các cặp font ví dụ
+    (không đậm, đậm), chúng ta có thể huấn luyện một thuật toán machine learning
+    nhận vector ẩn của phiên bản không đậm làm đầu vào và xuất ra
+    vector ẩn của phiên bản đậm. Với dữ liệu huấn luyện bổ sung về weight của font,
+    thuật toán machine learning có thể học cách tạo ra các font có độ đậm tùy ý.
+    Vector thuộc tính chỉ là một cách tiếp cận cực kỳ đơn giản để thực hiện
+    những loại thao tác này.
+  </p>
+  <p>
+    Vì những lý do đó, có vẻ khó có khả năng vector thuộc tính sẽ tồn tại lâu dài
+    như một phương pháp thao tác các đặc trưng cấp cao. Trong vài năm tới,
+    nhiều phương pháp tốt hơn sẽ được phát triển. Tuy nhiên, chúng ta vẫn có thể kỳ vọng
+    các giao diện cung cấp những thao tác tương tự về mặt khái quát như các thao tác
+    được phác thảo ở trên, cho phép truy cập tới các khái niệm cấp cao
+    và thậm chí do người dùng tự định nghĩa. Mẫu giao diện đó
+    không phụ thuộc vào các chi tiết kỹ thuật của vector thuộc tính.
+  </p>
+</d-article><h2>
+    Mô hình đối kháng sinh tương tác
+  </h2>
+  <p>
+    Hãy xem xét một ví dụ khác về việc sử dụng các mô hình machine learning để
+    tăng cường khả năng sáng tạo của con người. Đó là mạng đối kháng sinh
+    tương tác (interactive generative adversarial networks), hay iGANs,
+    được giới thiệu bởi
+    <d-cite key="Zhu2016a">Zhu <em>và cộng sự</em></d-cite> vào năm 2016.
+  </p>
+  <p>
+    Một trong những ví dụ của Zhu <em>và cộng sự</em> là việc sử dụng iGANs trong
+    một giao diện để tạo ra hình ảnh các sản phẩm tiêu dùng như giày dép.
+    Theo cách thông thường, một giao diện như vậy sẽ yêu cầu lập trình viên
+    viết một chương trình chứa rất nhiều tri thức về giày:
+    đế giày, dây buộc, gót giày, v.v. Thay vì làm như vậy,
+    Zhu <em>và cộng sự</em> huấn luyện một mô hình sinh bằng $50$
+    nghìn hình ảnh giày được tải về từ Zappos. Sau đó, họ sử dụng
+    mô hình sinh đó để xây dựng một giao diện cho phép người dùng
+    phác thảo sơ bộ hình dạng của một chiếc giày, phần đế, dây buộc,
+    và các thành phần khác:
+  </p>
+  <figure name="RedShoeGif">
+    <video controls src="videos/shoe-sketch.mov" width="100%" poster="videos/shoe-sketch-poster.jpg"></video>
+    <figcaption>Trích từ <d-cite key="Zhu2016a">Zhu <em>và cộng sự</em></d-cite>.</figcaption>
+  </figure>
+  <p>
+    Chất lượng hình ảnh còn thấp, một phần vì mô hình sinh mà
+    Zhu <em>và cộng sự</em> sử dụng đã lỗi thời theo tiêu chuẩn hiện đại (năm 2017)
+    &ndash; với các mô hình hiện đại hơn, chất lượng hình ảnh sẽ cao hơn nhiều.
+  </p>
+  <p>
+    Tuy nhiên, chất lượng hình ảnh không phải là điều cốt lõi.
+    Có rất nhiều điều thú vị đang diễn ra trong nguyên mẫu này.
+    Chẳng hạn, hãy chú ý cách hình dạng tổng thể của chiếc giày thay đổi đáng kể
+    khi phần đế được tô đầy &ndash; nó trở nên hẹp hơn và thanh thoát hơn.
+    Nhiều chi tiết nhỏ cũng được bổ sung, chẳng hạn như đường viền đen ở phía trên
+    phần đế màu trắng và màu đỏ được tô trên toàn bộ phần thân trên của giày.
+    Những điều này cùng nhiều đặc điểm khác được tự động suy ra từ
+    mô hình sinh nền tảng theo cách mà chúng tôi sẽ mô tả ngay sau đây.
+  </p>
+  <p>
+    Cùng một giao diện đó cũng có thể được sử dụng để phác thảo phong cảnh.
+    Điểm khác biệt duy nhất là mô hình sinh nền tảng được huấn luyện trên
+    hình ảnh phong cảnh thay vì hình ảnh giày. Trong trường hợp này,
+    người dùng chỉ cần phác thảo các màu sắc liên quan đến phong cảnh.
+    Ví dụ, dưới đây là một người dùng phác thảo một vùng cỏ xanh,
+    đường viền của một ngọn núi, bầu trời xanh và tuyết trên núi:
+  </p>
+  <figure name="LandscapeSketch">
+    <video controls src="videos/mountain-sketch.mov" width="100%" poster="videos/mountain-sketch-poster.jpg"></video>
+    <figcaption>Trích từ <d-cite key="Zhu2016a">Zhu <em>và cộng sự</em></d-cite>.</figcaption>
+  </figure>
+  <p>
+    Các mô hình sinh được sử dụng trong những giao diện này khác với
+    mô hình font của chúng tôi. Thay vì sử dụng variational autoencoder,
+    chúng dựa trên <d-cite key="Goodfellow2014a">mạng đối kháng sinh
+    (GANs)</d-cite>. Tuy nhiên, ý tưởng nền tảng vẫn là tìm ra một
+    không gian ẩn có số chiều thấp có thể được sử dụng để biểu diễn
+    (chẳng hạn) toàn bộ các hình ảnh phong cảnh, rồi ánh xạ không gian ẩn đó
+    sang hình ảnh tương ứng. Một lần nữa, chúng ta có thể xem các điểm
+    trong không gian ẩn như một cách cô đọng để mô tả hình ảnh phong cảnh.
+  </p>
+  <p>
+    Nói một cách khái quát, cách thức hoạt động của iGANs như sau.
+    Bất kể hình ảnh hiện tại là gì, nó đều tương ứng với một điểm nào đó
+    trong không gian ẩn:
+  </p>
+  <figure id="igans-basic" class="tight">
+  </figure>
+  <p>
+    Giả sử, như trong video trước đó, người dùng bây giờ phác thảo
+    một nét vẽ mô tả đường viền của ngọn núi. Chúng ta có thể xem
+    nét vẽ đó như một ràng buộc đối với hình ảnh, từ đó xác định
+    một không gian con của không gian ẩn, bao gồm tất cả các điểm
+    trong không gian ẩn có hình ảnh tương ứng khớp với đường viền đó:
+  </p>
+  <figure id="igans-constraint" class="tight">
+  </figure>
+  <p>
+    Giao diện hoạt động bằng cách tìm một điểm trong không gian ẩn
+    nằm gần hình ảnh hiện tại, để hình ảnh không bị thay đổi quá nhiều,
+    đồng thời cũng tiến gần tới việc thỏa mãn các ràng buộc đã được áp đặt.
+    Điều này được thực hiện bằng cách tối ưu hóa một hàm mục tiêu
+    kết hợp khoảng cách tới từng ràng buộc được áp đặt
+    cũng như khoảng cách dịch chuyển khỏi điểm hiện tại.
+    Nếu chỉ có một ràng buộc duy nhất, chẳng hạn như ràng buộc tương ứng
+    với nét phác họa ngọn núi, thì quá trình này sẽ có dạng gần giống như sau:
+  </p>
+  <figure id="igans-minimization" class="tight">
+  </figure>
+  <p>
+    Do đó, chúng ta có thể xem đây là một phương thức áp đặt các ràng buộc
+    lên không gian ẩn để di chuyển hình ảnh theo những cách có ý nghĩa.
+  </p>
+  <p>
+    iGANs có nhiều điểm tương đồng với công cụ font mà chúng tôi đã trình bày trước đó.
+    Cả hai đều cung cấp các thao tác mã hóa rất nhiều tri thức tinh tế về thế giới,
+    dù đó là việc học cách hiểu hình dạng của một ngọn núi,
+    hay việc suy luận rằng khoảng trống âm được bao kín cần được bảo toàn
+    khi in đậm một font chữ. Cả iGANs và công cụ font đều cung cấp
+    những cách thức để hiểu và điều hướng trong một không gian nhiều chiều,
+    đồng thời giữ cho chúng ta nằm trong không gian tự nhiên của font chữ,
+    giày dép hoặc phong cảnh. Như Zhu <em>và cộng sự</em> nhận xét:
+  </p>
+  <blockquote>
+    [Đ]ối với hầu hết chúng ta, ngay cả một thao tác chỉnh sửa hình ảnh đơn giản trong Photoshop
+    cũng tạo ra những khó khăn gần như không thể vượt qua&hellip; bất kỳ chỉnh sửa nào
+    kém hoàn hảo đều ngay lập tức khiến hình ảnh trở nên hoàn toàn phi thực tế.
+    Nói cách khác, mô hình thao tác thị giác cổ điển không ngăn người dùng
+    “rơi khỏi” đa tạp của các hình ảnh tự nhiên.
+  </blockquote>
+  <p>
+    Giống như công cụ font, iGANs là một công nghệ nhận thức.
+    Người dùng có thể nội hóa các thao tác giao diện thành những thành phần nguyên thủy mới
+    trong tư duy của mình. Chẳng hạn, trong trường hợp giày dép,
+    họ có thể học cách suy nghĩ theo dạng những thay đổi mà họ muốn áp dụng:
+    thêm gót giày, tăng chiều cao phần cổ giày hoặc thêm một điểm nhấn đặc biệt.
+    Điều này phong phú hơn cách những người không chuyên thường suy nghĩ về giày
+    (“cỡ 11, màu đen”, <em>v.v.</em>). Trong chừng mực mà những người không chuyên
+    có suy nghĩ tinh vi hơn &ndash; “làm phần cổ giày cao hơn và thanh thoát hơn một chút” &ndash;
+    họ thường có rất ít cơ hội thực hành kiểu suy nghĩ đó hoặc quan sát hệ quả
+    từ các lựa chọn của mình. Việc có một giao diện như thế này giúp việc khám phá
+    trở nên dễ dàng hơn, cho phép phát triển các thành ngữ thiết kế,
+    khả năng lập kế hoạch, trao đổi ý tưởng với bạn bè, v.v.
+  </p>
+  <h2>
+    Hai mô hình về tính toán
+  </h2>
+  <p>
+    Hãy quay lại câu hỏi mà chúng ta đã mở đầu bài luận,
+    câu hỏi về mục đích của máy tính và cách điều đó liên hệ với
+    tăng cường trí tuệ.
+  </p>
+  <p>
+    Một quan niệm phổ biến về máy tính là chúng là những cỗ máy giải quyết vấn đề:
+    “máy tính, kết quả của việc bắn viên đạn pháo này trong điều kiện gió như thế này
+    [v.v.] sẽ là gì?”;
+    “máy tính, nhiệt độ tối đa ở Tokyo sau 5 ngày nữa sẽ là bao nhiêu?”;
+    “máy tính, nước đi tốt nhất khi bàn cờ vây ở trạng thái này là gì?”;
+    “máy tính, hình ảnh này nên được phân loại như thế nào?”;
+    và nhiều câu hỏi tương tự khác.
+  </p>
+  <p>
+    Đây là một quan niệm chung cho cả cách nhìn ban đầu về máy tính như
+    những cỗ máy xử lý số liệu lẫn phần lớn các nghiên cứu về AI,
+    cả trong quá khứ và hiện tại. Đó là mô hình xem máy tính như
+    một phương tiện thuê ngoài hoạt động nhận thức.
+    Trong các hình dung mang tính suy đoán về AI trong tương lai,
+    mô hình <em>thuê ngoài nhận thức</em> này thường xuất hiện dưới hình ảnh
+    AI như một nhà tiên tri (oracle), có khả năng giải quyết một lớp lớn các bài toán
+    với hiệu năng vượt trội so với con người.
+  </p>
+  <p>
+    Tuy nhiên, hoàn toàn có thể tồn tại một quan niệm rất khác về mục đích của máy tính,
+    một quan niệm phù hợp hơn nhiều với các nghiên cứu về tăng cường trí tuệ.
+  </p>
+  <p>
+    Để hiểu quan điểm thay thế này, hãy xem xét trải nghiệm chủ quan của chúng ta
+    về tư duy. Đối với nhiều người, trải nghiệm đó mang tính ngôn ngữ:
+    họ suy nghĩ bằng ngôn ngữ, hình thành các chuỗi từ trong đầu,
+    tương tự như các câu nói hoặc các câu được viết trên trang giấy.
+    Với những người khác, tư duy mang tính trực quan hơn,
+    kết hợp các biểu diễn như đồ thị và bản đồ.
+    Những người khác nữa lại đưa toán học vào quá trình tư duy của mình,
+    sử dụng các biểu thức đại số hoặc các kỹ thuật sơ đồ hóa,
+    chẳng hạn như biểu đồ Feynman và biểu đồ Penrose.
+  </p>
+  <p>
+    Trong mỗi trường hợp, chúng ta đều đang suy nghĩ bằng những biểu diễn
+    do người khác phát minh ra: từ ngữ, đồ thị, bản đồ, đại số,
+    sơ đồ toán học, v.v. Chúng ta nội hóa những công nghệ nhận thức này
+    trong quá trình trưởng thành và sử dụng chúng như một loại nền tảng
+    cho tư duy của mình.
+  </p>
+  <p>
+    Trong phần lớn lịch sử nhân loại, phạm vi các công nghệ nhận thức sẵn có
+    thay đổi chậm và dần dần. Một từ mới được đưa vào sử dụng,
+    hoặc một ký hiệu toán học mới được phát minh.
+    Hiếm hơn, một công nghệ nhận thức hoàn toàn mới mang tính cách mạng
+    sẽ được phát triển. Chẳng hạn, vào năm 1637,
+    Descartes xuất bản tác phẩm “Discourse on Method”,
+    giải thích cách biểu diễn các ý tưởng hình học bằng đại số
+    và ngược lại:
+   </p>
+   <figure id="descartes"></figure>
+  <p>
+    Điều này đã tạo ra một sự thay đổi và mở rộng mang tính cách mạng
+    trong cách chúng ta suy nghĩ về cả hình học lẫn đại số.
+   </p>
+  <p>
+    Trong lịch sử, các công nghệ nhận thức có ảnh hưởng lâu dài
+    chỉ hiếm khi được phát minh. Tuy nhiên, máy tính hiện đại là một siêu phương tiện
+    (meta-medium) cho phép phát minh nhanh chóng nhiều công nghệ nhận thức mới.
+    Hãy xem xét một ví dụ tương đối tầm thường như <em>Photoshop</em>.
+    Những người sử dụng <em>Photoshop</em> thành thạo thường xuyên có những suy nghĩ
+    vốn trước đây là không thể, chẳng hạn:
+    “hãy áp dụng công cụ clone stamp cho lớp như thế này.”
+    Đây là một trường hợp của một lớp tư duy tổng quát hơn:
+    “máy tính, [loại hành động mới] này lên [loại biểu diễn mới cho một lớp đối tượng mới được hình dung]”.
+    Khi điều đó xảy ra, chúng ta đang sử dụng máy tính để mở rộng
+    phạm vi những suy nghĩ mà mình có thể nghĩ tới.
+  </p>
+  <p>
+    Chính mô hình <em>chuyển hóa nhận thức</em> này là nền tảng cho
+    nhiều công trình sâu sắc nhất về tăng cường trí tuệ.
+    Thay vì thuê ngoài hoạt động nhận thức, nó hướng tới việc thay đổi
+    các thao tác và các biểu diễn mà chúng ta sử dụng để suy nghĩ;
+    tức là thay đổi chính nền tảng của tư duy.
+    Vì vậy, mặc dù thuê ngoài nhận thức là quan trọng,
+    quan điểm chuyển hóa nhận thức này cung cấp một mô hình sâu sắc hơn nhiều
+    về tăng cường trí tuệ.
+    Đó là một quan điểm trong đó máy tính là phương tiện để thay đổi
+    và mở rộng chính tư duy của con người.
+  </p>
+  <p>
+    Trong lịch sử, các công nghệ nhận thức được phát triển bởi những nhà phát minh là con người,
+    từ sự ra đời của chữ viết tại Sumer và Mesoamerica
+    cho đến các giao diện hiện đại của những nhà thiết kế như Douglas Engelbart,
+    Alan Kay và nhiều người khác.
+  </p>
+  <p>
+    Những ví dụ như được mô tả trong bài luận này cho thấy các hệ thống AI
+    có thể hỗ trợ việc tạo ra các công nghệ nhận thức mới.
+    Những công cụ như công cụ font không chỉ là các oracle để tham khảo
+    khi bạn muốn có một font mới.
+    Thay vào đó, chúng có thể được sử dụng để khám phá và phát hiện,
+    cung cấp các biểu diễn và thao tác mới có thể được nội hóa
+    thành một phần trong tư duy của người dùng.
+    Và mặc dù những ví dụ này vẫn còn ở giai đoạn đầu,
+    chúng cho thấy AI không chỉ đơn thuần là thuê ngoài nhận thức.
+    Một cách nhìn khác về AI là hoàn toàn khả thi:
+    AI giúp chúng ta phát minh ra những công nghệ nhận thức mới,
+    những công nghệ làm biến đổi cách chúng ta suy nghĩ.
+  </p>
+
+```
+<p>
+Trong bài luận này, chúng tôi tập trung vào một số lượng nhỏ ví dụ,
+chủ yếu liên quan đến việc khám phá không gian ẩn.
+Tuy nhiên, còn rất nhiều ví dụ khác về tăng cường trí tuệ bằng trí tuệ nhân tạo.
+Để cung cấp một vài nét phác họa, dù không nhằm mục đích toàn diện:
+hệ thống <d-cite key="Ha2017">sketch-rnn</d-cite> dành cho vẽ có sự hỗ trợ của mạng nơ-ron;
+<d-cite key="Fiebrink2011">Wekinator</d-cite>,
+cho phép người dùng nhanh chóng xây dựng các nhạc cụ mới và các hệ thống nghệ thuật;
+<d-cite key="Loh2017">TopoSketch</d-cite>,
+để phát triển hoạt hình thông qua việc khám phá các không gian ẩn;
+các mô hình machine learning dùng để thiết kế
+<d-cite key="Gold2016">bố cục typography tổng thể</d-cite>;
+và một mô hình sinh cho phép nội suy giữa các
+<d-cite key="Roberts2017">cụm từ âm nhạc</d-cite>.
+Trong mỗi trường hợp, các hệ thống sử dụng machine learning
+để tạo ra những primitive mới có thể được tích hợp vào tư duy của người dùng.
+Ở phạm vi rộng hơn, tăng cường trí tuệ bằng trí tuệ nhân tạo sẽ dựa trên
+các lĩnh vực như <d-cite key="Colton2012">sáng tạo tính toán</d-cite>
+và <d-cite key="Ware2001">machine learning tương tác</d-cite>.
+```
+
+  </p><h2>
+    Tìm kiếm các nguyên tố suy nghĩ mạnh mẽ mới
+</h2>
+<p>
+    Chúng tôi đã lập luận rằng các hệ thống học máy có thể giúp tạo ra các đại diện và các thao tác phục vụ như những nguyên tố mới trong tư duy con người. Những nguyên tố mới này nên có những đặc tính gì? Đây là một câu hỏi quá rộng để trả lời một cách toàn diện trong một bài tiểu luận ngắn. Nhưng chúng tôi sẽ khám phá nó một cách sơ lược.
+</p>
+<p>
+    Trong lịch sử, các hình thức phương tiện mới quan trọng thường xuất hiện lạ lẫm khi được giới thiệu. Nhiều câu chuyện như vậy đã đi vào văn hóa đại chúng: gần như bạo loạn tại buổi công chiếu "Rite of Spring" của Stravinsky và Nijinsky; sự kinh ngạc gây ra bởi các bức tranh lập thể đầu tiên, dẫn <em>The New York Times</em> <d-cite key="NYT1911">bình luận</d-cite>: "Chúng có ý nghĩa gì? Những người chịu trách nhiệm cho chúng có mất trí không? Đây là nghệ thuật hay điên rồ? Ai mà biết được?"
+</p>
+<p>
+    Một ví dụ khác đến từ vật lý. Vào những năm 1940, các cách diễn giải khác nhau của lý thuyết điện động lượng tử được phát triển độc lập bởi các nhà vật lý Julian Schwinger, Shin'ichirō Tomonaga và Richard Feynman. Trong công trình của họ, Schwinger và Tomonaga sử dụng phương pháp đại số truyền thống, tương tự như phần còn lại của vật lý. Feynman sử dụng một phương pháp cấp tiến hơn, dựa trên những gì ngày nay được biết đến như các sơ đồ Feynman, để mô tả tương tác giữa ánh sáng và vật chất:
+</p>
+<figure class="grid" style="grid-template-columns: 3fr 1fr;">
+    <img src="images/feynmann-diagram.svg" style="max-width: 400px" />
+    <figcaption>Ảnh của <a href="https://commons.wikimedia.org/w/index.php?curid=1764161">Joel Holdsworth</a>, cấp phép theo Creative Commons Attribution-Share Alike 3.0 Unported
+    </figcaption>
+</figure>
+<p>
+    Ban đầu, phương pháp Schwinger-Tomonaga dễ hiểu hơn với các nhà vật lý khác. Khi Feynman và Schwinger trình bày công trình của họ tại một hội thảo năm 1948, Schwinger ngay lập tức được ca ngợi. Ngược lại, Feynman khiến khán giả bối rối. Như James Gleick viết trong <d-cite key="Gleick1992a">tiểu sử về Feynman</d-cite>:
+</p>
+<blockquote>
+    Feynman nhận thấy mọi người đều có nguyên tắc hoặc định lý ưa thích và ông đã vi phạm tất cả... Feynman biết mình thất bại. Lúc đó, ông đau khổ. Sau này, ông chỉ nói đơn giản: "Tôi có quá nhiều thứ. Các máy móc của tôi đến từ quá xa."
+</blockquote>
+<p>
+    Tất nhiên, sự lạ lẫm chỉ vì lạ lẫm thôi không hữu ích. Nhưng những ví dụ này gợi ý rằng các đột phá trong đại diện thường xuất hiện lạ lẫm lúc đầu. Có lý do nền tảng nào cho điều này không?
+</p>
+<p>
+    Một phần lý do là nếu một đại diện thực sự mới, nó sẽ khác biệt so với bất cứ thứ gì bạn từng thấy trước đây. Sơ đồ của Feynman, tranh của Picasso, nhạc của Stravinsky: tất cả đều tiết lộ những cách thức mới thực sự để tạo ý nghĩa. Các đại diện tốt sẽ làm sắc nét những hiểu biết này, bỏ qua những thứ quen thuộc để làm nổi bật những gì mới một cách sinh động nhất. Nhưng vì nhấn mạnh vào sự không quen thuộc, đại diện sẽ có vẻ lạ: nó hiển thị những mối quan hệ bạn chưa từng thấy trước đây. Theo một cách nào đó, nhiệm vụ của nhà thiết kế là xác định cốt lõi của sự lạ này và khuếch đại nó càng nhiều càng tốt.
+</p>
+<p>
+    Các đại diện lạ thường khó hiểu. Ban đầu, các nhà vật lý thích phương pháp Schwinger-Tomonaga hơn Feynman. Nhưng khi cách tiếp cận của Feynman dần được hiểu, họ nhận ra rằng mặc dù Schwinger-Tomonaga và Feynman tương đương về mặt toán học, phương pháp của Feynman lại mạnh mẽ hơn. Như Gleick viết:
+</p>
+<blockquote>
+    Các sinh viên của Schwinger tại Harvard gặp bất lợi cạnh tranh, hoặc có vẻ như vậy so với đồng nghiệp ở nơi khác, những người nghi ngờ họ đã sử dụng sơ đồ Feynman lén lút. Điều này đôi khi đúng... Murray Gell-Mann sau này đã ở lại nhà Schwinger một học kỳ và thích nói rằng ông đã tìm khắp nơi sơ đồ Feynman. Ông không tìm thấy gì, nhưng một phòng đã bị khóa...
+</blockquote>
+<p>
+    Những ý tưởng này không chỉ đúng với các đại diện lịch sử mà còn đúng với giao diện máy tính. Tuy nhiên, việc chúng tôi ủng hộ sự lạ lẫm trong đại diện mâu thuẫn với nhiều quan niệm phổ biến về giao diện, đặc biệt là niềm tin rộng rãi rằng chúng nên "thân thiện với người dùng", tức là đơn giản và ngay lập tức sử dụng được cho người mới. Điều này thường có nghĩa là giao diện bị rập khuôn, xây dựng từ các yếu tố truyền thống kết hợp theo cách chuẩn. Nhưng trong khi sử dụng một giao diện rập khuôn có thể dễ dàng và thú vị, đó là một sự dễ dàng tương tự như đọc một tiểu thuyết tình cảm công thức. Nó có nghĩa là giao diện không tiết lộ gì thực sự bất ngờ về lĩnh vực của nó. Và vì vậy, nó sẽ ít giúp làm sâu sắc hiểu biết của người dùng, hoặc thay đổi cách họ tư duy. Với các nhiệm vụ bình thường thì điều đó ổn, nhưng với các nhiệm vụ sâu hơn và lâu dài, bạn cần một giao diện tốt hơn.
+</p>
+<p>
+    Lý tưởng nhất, một giao diện sẽ làm nổi bật các nguyên tắc sâu sắc nhất của một lĩnh vực, tiết lộ một thế giới mới cho người dùng. Khi bạn học được giao diện đó, bạn nội hóa các nguyên tắc đó, mang lại cho bạn những cách suy luận mạnh mẽ hơn về thế giới đó. Những nguyên tắc đó chính là sự khác biệt trong hiểu biết của bạn. Chúng là tất cả những gì bạn thực sự muốn thấy, mọi thứ khác chỉ là hỗ trợ hoặc rác không quan trọng. Mục đích của các giao diện tốt nhất không phải là thân thiện với người dùng theo nghĩa nông cạn. Mà là thân thiện với người dùng theo nghĩa mạnh mẽ hơn, <d-cite key="Nielsen2016b">hiện thực hóa các nguyên tắc sâu sắc</d-cite> về thế giới, biến chúng thành điều kiện làm việc mà người dùng sinh sống và sáng tạo. Khi đó, những gì từng lạ lẫm có thể trở nên quen thuộc và thoải mái, trở thành một phần trong mô hình tư duy<d-footnote>Một ví dụ mạnh mẽ về ý tưởng này là khi một giao diện hiện thực hóa các nguyên tắc chung. Một ví dụ là một giao diện mà <d-cite key="Nielsen2016b">một trong chúng tôi</d-cite> phát triển dựa trên nguyên tắc bảo toàn năng lượng. Các nguyên tắc chung như vậy tạo ra nhiều mối quan hệ bất ngờ giữa các thực thể của một chủ đề, và do đó là nguồn giàu có các hiểu biết khi được hiện thực hóa trong giao diện.</d-footnote>.
+</p>
+<p>
+    Điều này có ý nghĩa gì đối với việc sử dụng các mô hình AI cho việc tăng cường trí tuệ?
+</p>
+<p>
+    Như chúng ta đã thấy, các mô hình học máy sẽ giúp xây dựng các giao diện hiện thực hóa các nguyên tắc sâu sắc theo cách có ý nghĩa với người dùng. Để điều đó xảy ra, các mô hình phải khám phá ra các nguyên tắc sâu sắc về thế giới, nhận diện các nguyên tắc đó, và sau đó làm nổi bật chúng một cách sinh động nhất trong giao diện, theo cách người dùng có thể hiểu.
+</p>
+<p>
+    Tất nhiên, đây là một nhiệm vụ khó khăn! Các ví dụ chúng tôi đã trình bày chỉ mới bắt đầu làm được điều này. Mô hình của chúng tôi đôi khi khám phá được những nguyên tắc khá sâu, như việc bảo toàn không gian âm kín khi in đậm một phông chữ. Nhưng đây chỉ là ngầm hiểu trong mô hình. Và mặc dù chúng tôi đã xây dựng công cụ tận dụng các nguyên tắc đó, sẽ tốt hơn nếu mô hình tự động suy ra các nguyên tắc quan trọng học được, và tìm cách làm nổi bật chúng một cách rõ ràng thông qua giao diện. (Tiến bộ được khuyến khích hướng tới điều này đã được thực hiện bởi <d-cite key="Chen2016">InfoGANs</d-cite>, sử dụng các ý tưởng lý thuy
+
+<script src="https://distill.pub/template.v2.js"></script>
+<!-- <script src="http://localhost:8888/dist/template.v2.js"></script> -->
+<script src="index.bundle.js"></script>
+<d-appendix>
+  <h3>Lời cảm ơn</h3>
+  <p>
+    Chúng tôi vô cùng biết ơn James Wexler, người đã xây dựng và huấn luyện mô hình mà các bản trình diễn phông chữ dựa trên đó. Nikhil Thorat và Daniel Smilkov cũng đã rộng lượng tối ưu hóa việc triển khai mô hình trên trình duyệt, chạy bằng <a href="https://deeplearnjs.org/">deeplearn.js</a>. Cảm ơn Daniel Dewey, Andy Matuschak, Robert Ochshorn và Bret Victor vì những cuộc trò chuyện và phản hồi quý giá.
+  </p>
+  <h3>Đóng góp của tác giả</h3>
+  <p>
+    Các tác giả được liệt kê theo thứ tự chữ cái trong dòng tên. Michael đã soạn thảo văn bản của bài tiểu luận, nhưng các ý tưởng trong bài được phát triển chung thông qua trao đổi với Shan. Shan đã phát triển các sơ đồ tương tác, với sự đóng góp đáng kể từ Michael.
+  </p>
+
+<d-footnote-list></d-footnote-list>
+
+</d-appendix>
+  <d-bibliography>
+    <script type="text/bibtex">
+      @article{Bernhardsson2016a,
+        title={Analyzing 50k fonts using deep neural networks},
+        author={Erik Bernhardsson},
+        url={https://erikbern.com/2016/01/21/analyzing-50k-fonts-using-deep-neural-networks.html},
+        year={2016}
+      }
+
+      @article{Chen2016,
+      title={InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets},
+      author={Xi Chen and Yan Duan and Rein Houthooft and John Schulman and Ilya Sutskever and Pieter Abbeel},
+      year={2016},
+      journal={NIPS}
+      }
+
+      @article{Colton2012,
+      title={Computational creativity: the final frontier?},
+      author={Simon Colton and Geraint A. Wiggins},
+      journal={ECAI},
+      year={2012}
+      }
+
+      @report{Engelbart1962a,
+        title={Augmenting Human Intellect: A Conceptual Framework},
+        author={Douglas C. Engelbart},
+        year={1962},
+      }
+
+      @book{Fiebrink2011,
+      title={Real-time human interaction with supervised learning algorithms for music composition and performance},
+      author={Rebecca Fiebrink},
+      year={2011},
+      publisher={Princeton University PhD Thesis}
+      }
+
+      @book{Gleick1992a,
+        title={Genius: The Life and Science of Richard Feynman},
+        author={James Gleick},
+        publisher={Vintage Books},
+        place={New York},
+        year={1992}
+      }
+
+      @article{Gold2016,
+      title={Taking The Robots To Design School, Part 1},
+      author={Jon Gold},
+      year={2016},
+      url={http://www.jon.gold/2016/05/robot-design-school/}
+      }
+
+      @article{GomezBombarelli2016,
+      title={Automatic chemical design using a data-driven continuous representation of molecules},
+      author={Rafael Gómez-Bombarelli and David Duvenaud and José
+      Miguel Hernández-Lobato and Jorge Aguilera-Iparraguirre and
+      Timothy D. Hirzel and Ryan P. Adams and Alán Aspuru-Guzik},
+      year={2016},
+      url={https://arxiv.org/abs/1610.02415}
+      }
+
+      @article{Goodfellow2014a,
+        title={Generative adversarial nets},
+        author={Ian J. Goodfellow and Jean Pouget-Abadie and Mehdi Mirza and Bing Xu and David Warde-Farley and Sherjil Ozair and Aaron Courville and Yoshua Bengio},
+        year={2014},
+        journal={Advances in Neural Information Processing Systems (NIPS)},
+        pages={2672-2680}
+      }
+
+      @article{Ha2017,
+      title={A Neural Representation of Sketch Drawings},
+      author={David Ha and Douglas Eck},
+      year={2017},
+      url={https://arxiv.org/abs/1704.03477}
+      }
+
+      @article{Holzinger2016,
+      title={Interactive machine learning for health informatics: when do we need the human-in-the-loop?},
+      author={Andreas Holzinger},
+      journal={Brain Informatics},
+      year={2016},
+      pages={119-131}
+      }
+
+      @article{Isola2017a,
+      title={Image-to-Image Translation with Conditional Adversarial Networks},
+      author={Phillip Isola and Jun-Yan Zhu and Tinghui Zhou and Alexei A. Efros},
+      year={2017},
+      url={https://arxiv.org/abs/1611.07004},
+      conference={CVPR}
+      }
+
+      @article{Kingma2014a,
+        title={Auto-encoding variational Bayes},
+        author={Diederik P. Kingma and Max Welling},
+        year={2014},
+        journal={ICLR}
+      }
+
+      @article{Larsen2016a,
+        title={Autoencoding beyond pixels using a learned similarity metric},
+      author={Anders Boesen Lindbo Larsen and Søren Kaae Sønderby and
+      Hugo Larochelle and Ole Winther},
+        year={2016},
+        journal={ICML}
+      }
+
+      @article{Loh2017,
+      title={TopoSketch: Drawing in Latent Space},
+      author={Ian Loh and Tom White},
+      year={2017},
+      journal={NIPS Workshop on Machine Learning for Creativity and Design}
+      }
+
+      @article{Nielsen2016a,
+        title={Toward an exploratory medium for mathematics},
+        author={Michael Nielsen},
+        year={2016},
+        url={http://cognitivemedium.com/emm/emm.html}
+      }
+
+      @article{Nielsen2016b,
+      title={Thought as a Technology},
+      author={Michael Nielsen},
+      year={2016},
+      url={http://cognitivemedium.com/tat/index.html}
+      }
+
+      @misc{NYT1911,
+        title={Eccentric School of Painting Increased Its Vogue in the Current Art Exhibition &mdash;
+        What Its Followers Attempt to Do},
+        journal={The New York Times},
+        url={http://query.nytimes.com/mem/archive-free/pdf?res=9D02E2D71131E233A2575BC0A9669D946096D6CF&mcubz=3},
+        year={1911}
+      }
+
+      @article{Radford2016a,
+        title={Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks},
+        author={Alec Radford and Luke Metz and Soumith Chintala},
+        journal={ICLR},
+        url={https://arxiv.org/abs/1511.06434},
+        year={2016}
+      }
+
+      @article{Roberts2017,
+      title={Hierarchical Variational Autoencoders for Music},
+      author={Adam Roberts and Jesse Engel and Douglas Eck},
+      year={2017},
+      journal={NIPS Workshop on Machine Learning for Creativity and Design},
+      url={https://nips2017creativity.github.io/doc/Hierarchical_Variational_Autoencoders_for_Music.pdf}
+      }
+
+      @article{Sloan2017,
+      title={Writing with the Machine},
+      author={Robin Sloan},
+      journal={Eyeo},
+      year={2017},
+      url={https://vimeo.com/232545219}
+      }
+
+      @article{Ware2001,
+      title={Interactive machine learning: letting users build classifiers},
+      author={Malcolm Ware and Eibe Frank and Geoffrey Holmes and Mark Hall
+      and Ian H. Witten},
+      journal={International Journal of Human-Computer Studies},
+      volume={55},
+      pages={281-292},
+      year={2001}
+      }
+
+      @article{Wexler2017,
+      title={deeplearn.js font demo},
+      url={https://pair-code.github.io/font-explorer/},
+      author={James Wexler},
+      year={2017}
+      }
+
+      @article{White2016a,
+      title={Sampling Generative Networks},
+      author={Tom White},
+      url={https://arxiv.org/abs/1609.04468},
+      year={2016}
+      }
+
+      @article{Zhu2016a,
+        title={Generative visual manipulation on the natural image manifold},
+        author={Jun-Yan Zhu and Philipp Krähenbühl and Eli Schechtman
+        and Alexei A. Efros},
+        journal={European Conference on Computer Vision (ECCV)},
+        year={2016},
+      }
+
+
+    </script>
+  </d-bibliography>
+
